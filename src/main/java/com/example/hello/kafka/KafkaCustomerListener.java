@@ -1,5 +1,8 @@
-package com.example.hello;
+package com.example.hello.kafka;
 
+import com.example.hello.Foo2;
+import com.example.hello.Greeting;
+import com.example.hello.HelloApplication;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.task.SimpleAsyncTaskExecutor;
@@ -12,7 +15,7 @@ import java.util.concurrent.CountDownLatch;
 
 @Component
 @EnableKafka
-public class KafkaCustomeListener {
+public class KafkaCustomerListener {
     public final CountDownLatch countDownLatch1 = new CountDownLatch(1000);
     private final TaskExecutor exec = new SimpleAsyncTaskExecutor();
     private final Logger logger = LoggerFactory.getLogger(HelloApplication.class);

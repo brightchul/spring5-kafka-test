@@ -1,4 +1,4 @@
-package com.example.hello;
+package com.example.hello.kafka;
 
 import org.apache.kafka.clients.admin.NewTopic;
 import org.springframework.context.annotation.Bean;

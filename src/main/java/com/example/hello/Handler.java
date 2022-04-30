@@ -14,10 +14,10 @@ import reactor.core.publisher.Mono;
 public class Handler {
 
     @Autowired
-    private KafkaTemplate<Object, Object> template;
+    private KafkaTemplate<String, String> template;
 
     public Mono<ServerResponse> getHello(ServerRequest request) {
-        this.template.send("topic1", new Foo2("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"));
+        this.template.send("topic1", new Foo2("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!").toString());
         return ServerResponse.ok().body(Mono.just("hello"), String.class);
     }
 
@@ -26,10 +26,10 @@ public class Handler {
         Greeting greeting = new Greeting("message : " + id, id);
         Mono<Greeting> monoGreeting = Mono.just(greeting);
 
-        this.template.send("topic1.DLT", greeting);
+        this.template.send("topic1.DLT", greeting.toString());
 
         Mono<ServerResponse> serverResponse =
-                ServerResponse.ok().contentType(MediaType.APPLICATION_JSON).body(monoGreeting, Greeting.class);
+                ServerResponse.ok().contentType(MediaType.APPLICATION_JSON).body(monoGreeting, String.class);
 
         return serverResponse;
     }
