@@ -1,0 +1,33 @@
+version: '3.6'
+services:
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.16.2
+    container_name: elasticsearch
+    environment:
+      discovery.type: single-node
+      node.name: elasticsearch
+      bootstrap.memory_lock: "true"
+      ES_JAVA_OPTS: -Xms1g -Xmx1g
+      ELASTIC_PASSWORD: test1234
+
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+       - esdata1:/usr/share/elasticsearch/data
+    ports:
+      - 9200:9200
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:7.16.1
+    container_name: kibana
+    ports:
+      - 5601:5601
+    environment:
+      - ELASTICSEARCH_HOSTS=["http://elasticsearch:9200"]
+    depends_on:
+      - elasticsearch
+    
+volumes:
+  esdata1:
