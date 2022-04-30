@@ -1,6 +1,6 @@
 # spring5-kafka-test
 
-### 개발 스텍
+### 개발 스택
 - spring boot
 - zookeeper
 - kafka
