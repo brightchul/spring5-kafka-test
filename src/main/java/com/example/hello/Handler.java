@@ -29,7 +29,7 @@ public class Handler {
         this.template.send("topic1.DLT", greeting.toString());
 
         Mono<ServerResponse> serverResponse =
-                ServerResponse.ok().contentType(MediaType.APPLICATION_JSON).body(monoGreeting, String.class);
+                ServerResponse.ok().contentType(MediaType.APPLICATION_JSON).body(monoGreeting, Greeting.class);
 
         return serverResponse;
     }
