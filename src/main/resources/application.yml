@@ -4,4 +4,3 @@ spring:
       bootstrap-server: localhost:9092
     consumer:
       bootstrap-server: localhost:9092
-
